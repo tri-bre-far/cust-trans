@@ -9,30 +9,41 @@ This project prototypes a secure, scalable data pipeline using Google Cloud. It 
 - CI/CD with GitHub Actions
 
 ## 🏗️ Architecture Overview
-
+```
 cust-trans/
 ├── pipeline/                  # Python transformation logic
 │   ├── transforms.py
 │   └── test_transforms.py
-├── terraform/                 # Terraform infrastructure setup
-│   ├── main.tf                # Core resources (GCS, BigQuery, IAM)
-│   ├── variables.tf           # Input variables
-│   └──  outputs.tf            # Output values
-├── data/                     # data used for tables
-│   ├── cutomers.csv          #dummy customer profile data
-│   └── transactions.csv      #dummy raw transactions logs
+├── terraform/                    # Terraform infrastructure setup
+│   ├── main.tf                   # Core resources (GCS, BigQuery, IAM)
+│   ├── variables.tf              # Input variables
+│   └──  outputs.tf               # Output values
+├── data/                         # data used for tables
+│   ├── cutomers.csv              
+│   └── transactions.csv         
+├── sql/                          # materialized tables
+│   ├── top_customers.sql         #top 5% customers
+│   └── monthly_spend.sql         #total and avg monthly spend per customer
+├── python/                       # other python scripts used
+│   ├── generate_customers.py     
+│   ├── generate_transactions.py
+│   ├── beam_customers_pipeline.py
+│   └── beam_transactions_pipeline.py
+├── tests/                         # data used for tables            
+│   └── test_pipeline.py 
 ├── requirements.txt
 ├── README.md
 └── .github/
     └── workflows/
         └── python-ci.yml
+```
 
 ## 🚀 Setup Instructions
 1. Enable GCP APIs: Dataflow, BigQuery, Storage
-2. Run `terraform apply` to provision infra
-3. Upload CSVs to GCS
-4. Execute `beam_custmers_pipeline.py` & `beam_transactions_pipeline.py`via Dataflow
-5. Create materialized tables in BigQuery
+2. Generate & Upload CSVs to GCS via the `generate_transactions.py` & `generate_customers.py`
+3. Execute `beam_custmers_pipeline.py` & `beam_transactions_pipeline.py`via Dataflow
+4. Create materialized tables in BigQuery
+5. Run `terraform apply` to provision infra
 
 ### 🔐 GCP Permissions
 Ensure the following APIs are enabled:
