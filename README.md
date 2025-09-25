@@ -29,8 +29,6 @@ cust-trans/
 │   ├── generate_transactions.py
 │   ├── beam_customers_pipeline.py
 │   └── beam_transactions_pipeline.py
-├── tests/                         # data used for tables            
-│   └── test_pipeline.py 
 ├── requirements.txt
 ├── README.md
 └── .github/
@@ -41,9 +39,12 @@ cust-trans/
 ## 🚀 Setup Instructions
 1. Enable GCP APIs: Dataflow, BigQuery, Storage
 2. Generate & Upload CSVs to GCS via the `generate_transactions.py` & `generate_customers.py`
-3. Execute `beam_custmers_pipeline.py` & `beam_transactions_pipeline.py`via Dataflow
-4. Create materialized tables in BigQuery
-5. Run `terraform apply` to provision infra
+3. Test `beam_customers_pipeline.py` & `beam_transactions_pipeline.py` by running:  python beam_customers_pipeline.py --runner DirectRunner
+4. Execute `beam_customers_pipeline.py` & `beam_transactions_pipeline.py`via Dataflow to create a modular beam pipeline
+5. Apply partitioning on transaction date & clustering on customer_id to the transactions table in BigQuery
+6. Create materialized tables in BigQuery using top_customers.sql & monthly_spend.sql
+7. test test_transforms.py using pytest
+8. Run `terraform apply` to provision infra
 
 ### 🔐 GCP Permissions
 Ensure the following APIs are enabled:
