@@ -40,7 +40,7 @@ cust-trans/
 1. Enable GCP APIs: Dataflow, BigQuery, Storage
 2. Generate & Upload CSVs to GCS via the `generate_transactions.py` & `generate_customers.py`
 3. Test `beam_customers_pipeline.py` & `beam_transactions_pipeline.py` by running:  python beam_customers_pipeline.py --runner DirectRunner
-4. Execute `beam_customers_pipeline.py` & `beam_transactions_pipeline.py`via Dataflow to create a modular beam pipeline
+4. Execute `beam_customers_pipeline.py` & `beam_transactions_pipeline.py`via Dataflow to create a modular beam pipeline which will package code, upload to the staging bucket & generate a dataflow job
 5. Apply partitioning on transaction date & clustering on customer_id to the transactions table in BigQuery
 6. Create materialized tables in BigQuery using top_customers.sql & monthly_spend.sql
 7. test test_transforms.py using pytest
@@ -63,3 +63,18 @@ Create a service account with roles:
 cd terraform
 terraform init
 terraform apply
+```
+
+## 📌 Assumptions
+- CSVs are UTF-8 encoded and contain headers
+- Timestamps are in UTC
+- Email addresses require normalization
+- Nulls and type mismatches are handled in the pipeline
+
+## 🔮 Future Improvements
+- Add dbt for modular SQL modeling
+- Integrate Cloud Composer for orchestration
+- Implement data quality checks with Great Expectations
+- Add anomaly detection for spend patterns
+- Enable streaming ingestion for real-time analytics
+
