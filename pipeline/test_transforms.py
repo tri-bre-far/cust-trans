@@ -16,6 +16,6 @@ def test_parse_transaction_null_amount():
     assert result['transaction_type'] == 'purchase'
 
 def test_parse_transaction_bad_date():
-    row = ['003', '789', '50.00', 'bad-date']
+    row = ['003', '789', '50.00', 'bad-date','purchase']
     result = parse_transaction(row)
     assert result['transaction_date'] is None
