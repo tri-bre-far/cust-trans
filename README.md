@@ -45,6 +45,7 @@ cust-trans/
 6. Create materialized tables in BigQuery using top_customers.sql & monthly_spend.sql
 7. test test_transforms.py using pytest
 8. Run `terraform apply` to provision infra
+9. Enable Github Actions
 
 ### 🔐 GCP Permissions
 Ensure the following APIs are enabled:
@@ -72,9 +73,12 @@ terraform apply
 - Nulls and type mismatches are handled in the pipeline
 
 ## 🔮 Future Improvements
-- Add dbt for modular SQL modeling
+- Terraform, need to test once resolve issues
+- Need to fix the errors in test_transforms.py
+- Consider BigQuery table-level encryption if sensitive fields are involved  
+- Add dbt for modular SQL modelLing
 - Integrate Cloud Composer for orchestration
-- Implement data quality checks with Great Expectations
+- Implement data quality checks
 - Add anomaly detection for spend patterns
 - Enable streaming ingestion for real-time analytics
 
