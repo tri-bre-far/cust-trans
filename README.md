@@ -75,6 +75,7 @@ terraform apply
 ## 🔮 Future Improvements
 - Terraform, need to test once resolve issues
 - Need to fix the errors in test_transforms.py
+- Schedule refreshes of materialized tables top_customer.sql & monthly_spend.sql in Cloud composer or Cloud scheduler
 - Consider BigQuery table-level encryption if sensitive fields are involved  
 - Add dbt for modular SQL modelLing
 - Integrate Cloud Composer for orchestration
