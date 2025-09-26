@@ -62,8 +62,11 @@ Create a service account with roles:
 ### ⚙️ Terraform Deployment
 ```bash
 cd terraform
-terraform init
-terraform apply
+terraform init      # Initialize project  
+terraform fmt       # Formats code
+terraform validate  # Checks for syntax errors
+terraform plan      # preview the changes to review what terraform will do  
+terraform apply     # Apply configuration
 ```
 
 ## 📌 Assumptions
@@ -77,7 +80,7 @@ terraform apply
 - Need to fix the errors in test_transforms.py
 - Schedule refreshes of materialized tables top_customer.sql & monthly_spend.sql in Cloud composer or Cloud scheduler
 - Consider BigQuery table-level encryption if sensitive fields are involved  
-- Add dbt for modular SQL modelLing
+- Add dbt for modular SQL modelling
 - Integrate Cloud Composer for orchestration
 - Implement data quality checks
 - Add anomaly detection for spend patterns
