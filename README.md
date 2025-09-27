@@ -76,8 +76,7 @@ terraform apply     # Apply configuration
 - Nulls and type mismatches are handled in the pipeline
 
 ## 🔮 Future Improvements
-- Terraform, need to test once resolve issues
-- Need to fix the errors in test_transforms.py
+- Terraform, need to test once resolve installation issues on laptop
 - Schedule refreshes of materialized tables top_customer.sql & monthly_spend.sql in Cloud composer or Cloud scheduler
 - Consider BigQuery table-level encryption if sensitive fields are involved  
 - Add dbt for modular SQL modelling
