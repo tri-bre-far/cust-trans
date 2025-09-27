@@ -35,11 +35,6 @@ resource "google_project_iam_member" "bigquery_user" {
   member  = "321240239901-compute@developer.gserviceaccount.com"
 }
 
-resource "google_project_iam_member" "editor" {
-  project = 'data-engineer-task-python'
-  role    = "roles/Editor"
-  member  = "321240239901-compute@developer.gserviceaccount.com"
-}
 
 resource "google_project_iam_member" "storage_object_user" {
   project = 'data-engineer-task-python'
